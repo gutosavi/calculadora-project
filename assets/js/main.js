@@ -7,18 +7,18 @@ function Calculadora(){
 
     this.btnDisplay = function(valor){
         this.display.value += valor;
-    };
+    }; // o display e se valor irá receber o valor e adicionar
 
     this.realizaCalculo = function(){
         let conta = this.display.value;
 
         try{
             conta = eval(conta)
-            if(!conta){
+            if(!conta){ // se for diferente de conta
                 alert('Operação inválida');
                 return
             }
-            this.display.value = String(conta);
+            this.display.value = String(conta); // será formatado como texto. Propriedades .value de elementos HTML esperam uma string. Isso garante que apareça na interface do usuário.
         } catch (e){
             alert('Operação inválida')
         }
@@ -29,7 +29,6 @@ function Calculadora(){
             const el = e.target;
             if (el.classList.contains('btn-num')){
                 this.btnDisplay(el.innerText);
-                console.log('estou sendo clicado');
             }
 
             if(el.classList.contains('btn-clear')){
@@ -37,13 +36,12 @@ function Calculadora(){
             }
 
             if(el.classList.contains('btn-del')){
-                this.display.value = this.display.value.slice(0, -1);
+                this.display.value = this.display.value.slice(0, -1); 
             }
 
             if(el.classList.contains('btn-eq')){
                 this.realizaCalculo();
             }
-
         })
     };
 
