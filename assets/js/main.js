@@ -7,7 +7,7 @@ function Calculadora(){
 
     this.btnDisplay = function(valor){
         this.display.value += valor;
-    }; // o display e se valor irá receber o valor e adicionar
+    }; // o display e seu valor irá receber o valor e adicionar
 
     this.realizaCalculo = function(){
         let conta = this.display.value;
