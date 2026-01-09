@@ -34,6 +34,7 @@ section#calculadora{
     font-size: 5rem;
     text-align: right;
     border: none;
+    outline: none;
     background-color: hsl(0, 0%, 20%);
     color: white;
 }

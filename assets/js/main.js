@@ -1,17 +1,18 @@
 function Calculadora(){
     this.display = document.querySelector('#display'),
 
-    this.inicia = function(){
+    this.inicia = () =>{
         this.cliqueBotoes();
-        
+        this.botaoEnter();
     };
 
-    this.btnDisplay = function(valor){
+    this.btnDisplay = (valor) => {
         this.display.value += valor;
         this.tamanhoFonteDisplay();
+        this.display.focus();
     }; // o display e seu valor irá receber o valor e adicionar
 
-    this.realizaCalculo = function(){
+    this.realizaCalculo = () => {
         let conta = this.display.value;
 
         try{
@@ -26,28 +27,25 @@ function Calculadora(){
         }
     };
 
-    this.cliqueBotoes = function(){
+    this.cliqueBotoes = () =>{
         document.addEventListener('click', (e) => { // Arrow function não cria seu próprio this, então aqui os this serão direcionados para a Calculadora
             const el = e.target;
-            if (el.classList.contains('btn-num')){
-                this.btnDisplay(el.innerText);
-            }
-
-            if(el.classList.contains('btn-clear')){
-                this.display.value = '';
-            }
-
-            if(el.classList.contains('btn-del')){
-                this.display.value = this.display.value.slice(0, -1); 
-            }
-
-            if(el.classList.contains('btn-eq')){
-                this.realizaCalculo();
-            }
+            if(el.classList.contains('btn-num')) this.btnDisplay(el.innerText);
+            if(el.classList.contains('btn-clear')) this.display.value = '';
+            if(el.classList.contains('btn-del')) this.display.value = this.display.value.slice(0, -1); 
+            if(el.classList.contains('btn-eq')) this.realizaCalculo(); 
         })
     };
 
-    this.tamanhoFonteDisplay = function(){
+    this.botaoEnter = () => {
+        this.display.addEventListener('keypress', e => {
+            if(e.key === 'Enter'){
+                this.realizaCalculo();
+            };
+        })
+    };
+
+    this.tamanhoFonteDisplay = () => {
         if (this.display.value.length <= 8){
             this.display.style.fontSize = '5rem';
         } else if (this.display.value.length <= 16){
