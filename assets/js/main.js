@@ -3,10 +3,12 @@ function Calculadora(){
 
     this.inicia = function(){
         this.cliqueBotoes();
+        
     };
 
     this.btnDisplay = function(valor){
         this.display.value += valor;
+        this.tamanhoFonteDisplay();
     }; // o display e seu valor irá receber o valor e adicionar
 
     this.realizaCalculo = function(){
@@ -43,6 +45,16 @@ function Calculadora(){
                 this.realizaCalculo();
             }
         })
+    };
+
+    this.tamanhoFonteDisplay = function(){
+        if (this.display.value.length <= 8){
+            this.display.style.fontSize = '5rem';
+        } else if (this.display.value.length <= 16){
+            this.display.style.fontSize = '3rem';
+        } else {
+            this.display.style.fontSize = '2rem';
+        };
     };
 
 };
