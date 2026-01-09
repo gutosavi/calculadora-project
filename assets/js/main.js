@@ -15,10 +15,10 @@ function Calculadora(){
         let conta = this.display.value;
 
         try{
-            conta = eval(conta)
-            if(!conta){ // se for diferente de conta
+            conta = eval(conta)// perigoso em aplicações reais.
+            if(conta === undefined || conta === null || Number.isNaN(conta)){
                 alert('Operação inválida');
-                return
+                return;
             }
             this.display.value = String(conta); // será formatado como texto. Propriedades .value de elementos HTML esperam uma string. Isso garante que apareça na interface do usuário.
         } catch (e){
