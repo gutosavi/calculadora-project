@@ -1,7 +1,7 @@
 function Calculadora(){
     this.display = document.querySelector('#display'),
 
-    this.inicia = () =>{
+    this.inicia = () => {
         this.cliqueBotoes();
         this.botaoEnter();
     };
@@ -27,7 +27,7 @@ function Calculadora(){
         }
     };
 
-    this.cliqueBotoes = () =>{
+    this.cliqueBotoes = () => {
         document.addEventListener('click', (e) => { // Arrow function não cria seu próprio this, então aqui os this serão direcionados para a Calculadora
             const el = e.target;
             if(el.classList.contains('btn-num')) this.btnDisplay(el.innerText);
